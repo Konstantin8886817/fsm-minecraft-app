@@ -1,26 +1,26 @@
-import COAL from "../images/furnace/fuel/Coal.png";
-import SAND from "../images/furnace/smelt-inputs/Sand.png";
-import COBBLESTONE from "../images/furnace/smelt-inputs/Cobblestone.png";
-import GLASS from "../images/furnace/smelt-outputs/Glass.png";
-import STONE from "../images/furnace/smelt-outputs/Stone.png";
+import COAL from '../images/furnace/fuel/Coal.png'
+import SAND from '../images/furnace/smelt-inputs/Sand.png'
+import COBBLESTONE from '../images/furnace/smelt-inputs/Cobblestone.png'
+import GLASS from '../images/furnace/smelt-outputs/Glass.png'
+import STONE from '../images/furnace/smelt-outputs/Stone.png'
 
-function FurnaceGUI({ current, itemChoice }) {
+function FurnaceGUI({current, itemChoice}) {
   const getItemImage = (itemName) => {
     switch (itemName) {
-      case "SAND":
-        return SAND;
-      case "COBBLESTONE":
-        return COBBLESTONE;
-      case "GLASS":
-        return GLASS;
-      case "STONE":
-        return STONE;
-      case "COAL":
-        return COAL;
+      case 'SAND':
+        return SAND
+      case 'COBBLESTONE':
+        return COBBLESTONE
+      case 'GLASS':
+        return GLASS
+      case 'STONE':
+        return STONE
+      case 'COAL':
+        return COAL
       default:
-        break;
+        break
     }
-  };
+  }
   return (
     <div className="bg-gray-200 px-8 gui grid grid-cols-9 grid-rows-5">
       <h1 className="text-gray-600 col-start-4 col-span-3 text-center text-2xl">
@@ -48,13 +48,13 @@ function FurnaceGUI({ current, itemChoice }) {
       <div className="bg-gray-400 gui-slot col-start-3 row-start-3 h-6 w-6 mx-2 my-2 self-center flex items-end justify-self-center">
         <div
           className={`w-full bg-yellow-400 h-${
-            current.matches("smelting") &&
+            current.matches('smelting') &&
             current.context.fuelOperationsRemaining ===
               current.context.fuel.numOperations
-              ? "full"
+              ? 'full'
               : `${Math.floor(
                   (current.context.fuelOperationsRemaining * 6) /
-                    current.context.fuel.numOperations
+                    current.context.fuel.numOperations,
                 )}/6`
           }`}
         />
@@ -81,9 +81,9 @@ function FurnaceGUI({ current, itemChoice }) {
         <div
           className={`bg-white h-full ${
             current.context.progress === 0
-              ? "w-0"
+              ? 'w-0'
               : current.context.progress === 12
-              ? "w-full"
+              ? 'w-full'
               : `w-${current.context.progress}/12`
           }`}
         ></div>
@@ -105,7 +105,7 @@ function FurnaceGUI({ current, itemChoice }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default FurnaceGUI;
+export default FurnaceGUI

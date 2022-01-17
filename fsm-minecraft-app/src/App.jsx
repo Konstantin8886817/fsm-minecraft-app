@@ -1,34 +1,34 @@
-import React, { useState } from "react";
-import { useMachine } from "@xstate/react";
-import Furnace from "./components/Furnace";
-import FurnaceGUI from "./components/FurnaceGUI";
-import furnaceMachine from "./machines/furnaceMachine";
+import React, {useState} from 'react'
+import {useMachine} from '@xstate/react'
+import Furnace from './components/Furnace'
+import FurnaceGUI from './components/FurnaceGUI'
+import furnaceMachine from './machines/furnaceMachine'
 
 function App() {
-  const [current, send] = useMachine(furnaceMachine);
-  const [itemChoice, setItemChoice] = useState("SAND");
-  const [itemQuantity, setItemQuantity] = useState(0);
-  const [fuelChoice, setFuelChoice] = useState("COAL");
-  const [fuelQuantity, setFuelQuantity] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const [current, send] = useMachine(furnaceMachine)
+  const [itemChoice, setItemChoice] = useState('SAND')
+  const [itemQuantity, setItemQuantity] = useState(0)
+  const [fuelChoice, setFuelChoice] = useState('COAL')
+  const [fuelQuantity, setFuelQuantity] = useState(0)
+  const [progress, setProgress] = useState(0)
 
   const handleSmeltSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     send({
-      type: "ADD_ITEM",
+      type: 'ADD_ITEM',
       item: itemChoice,
       quantity: parseInt(itemQuantity),
-    });
-  };
-  
+    })
+  }
+
   const handleFuelSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     send({
-      type: "ADD_FUEL",
+      type: 'ADD_FUEL',
       item: fuelChoice,
       quantity: parseInt(fuelQuantity),
-    });
-  };
+    })
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -54,7 +54,7 @@ function App() {
           onChange={(e) => {
             e.target.value < 0
               ? setItemQuantity(0)
-              : setItemQuantity(e.target.value);
+              : setItemQuantity(e.target.value)
           }}
           min="0"
         />
@@ -80,7 +80,7 @@ function App() {
           onChange={(e) => {
             e.target.value < 0
               ? setFuelQuantity(0)
-              : setFuelQuantity(e.target.value);
+              : setFuelQuantity(e.target.value)
           }}
           className="minecraft-input"
           min="0"
@@ -94,13 +94,13 @@ function App() {
         </button>
       </form>
       <button
-        onClick={() => send({ type: "SMELT" })}
+        onClick={() => send({type: 'SMELT'})}
         className="minecraft-button mt-2 "
       >
         Smelt
       </button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,8 +1,8 @@
-import { createMachine } from "xstate";
+import {createMachine} from 'xstate'
 
 const furnaceMachine = createMachine({
-  id: "furnace",
-  initial: "idle",
+  id: 'furnace',
+  initial: 'idle',
   context: {
     itemSmelting: {
       name: null,
@@ -23,45 +23,45 @@ const furnaceMachine = createMachine({
   on: {
     REMOVE_PRODUCT: {
       actions: (context, event) => {
-        context.product.name = null;
-        context.product.quantity = 0;
+        context.product.name = null
+        context.product.quantity = 0
       },
     },
     ADD_FUEL: [
       {
         actions: (context, event) => {
-          context.fuel.name = event.item.toUpperCase();
+          context.fuel.name = event.item.toUpperCase()
           switch (event.item.toUpperCase()) {
-            case "COAL":
-              context.fuel.numOperations = 8;
-              break;
+            case 'COAL':
+              context.fuel.numOperations = 8
+              break
             default:
-              break;
+              break
           }
-          context.fuel.quantity += event.quantity;
+          context.fuel.quantity += event.quantity
         },
       },
     ],
     ADD_ITEM: {
       actions: (context, event) => {
-        context.itemSmelting.name = event.item.toUpperCase();
-        context.itemSmelting.quantity += event.quantity;
+        context.itemSmelting.name = event.item.toUpperCase()
+        context.itemSmelting.quantity += event.quantity
       },
     },
   },
   states: {
     idle: {
       entry: (context, event) => {
-        context.fuelOperationsRemaining = 0;
+        context.fuelOperationsRemaining = 0
       },
       on: {
         SMELT: {
-          target: "smelting",
+          target: 'smelting',
           cond: (context, event) =>
             context.fuel.quantity > 0 && context.itemSmelting.quantity > 0,
           actions: (context, event) => {
-            context.fuel.quantity = context.fuel.quantity - 1;
-            context.fuelOperationsRemaining = context.fuel.numOperations;
+            context.fuel.quantity = context.fuel.quantity - 1
+            context.fuelOperationsRemaining = context.fuel.numOperations
           },
         },
       },
@@ -69,9 +69,9 @@ const furnaceMachine = createMachine({
     smelting: {
       after: {
         833: {
-          target: "smeltTick",
+          target: 'smeltTick',
           actions: (context, event) => {
-            context.progress = context.progress + 1;
+            context.progress = context.progress + 1
           },
         },
       },
@@ -79,52 +79,52 @@ const furnaceMachine = createMachine({
     itemFinishedSmelting: {
       always: [
         {
-          target: "idle",
+          target: 'idle',
           cond: (context, event) =>
             context.itemSmelting.quantity - 1 === 0 ||
             (context.fuel.quantity === 0 &&
               context.fuelOperationsRemaining - 1 === 0),
         },
         {
-          target: "smelting",
+          target: 'smelting',
         },
       ],
     },
     smeltTick: {
       always: [
         {
-          target: "itemFinishedSmelting",
+          target: 'itemFinishedSmelting',
           cond: (context, event) => context.progress === 12,
           actions: (context, event) => {
-            context.progress = 0;
-            context.itemSmelting.quantity = context.itemSmelting.quantity - 1;
+            context.progress = 0
+            context.itemSmelting.quantity = context.itemSmelting.quantity - 1
             context.fuelOperationsRemaining =
-              context.fuelOperationsRemaining - 1;
+              context.fuelOperationsRemaining - 1
             if (
               context.fuelOperationsRemaining === 0 &&
               context.fuel.quantity > 0
             ) {
-              context.fuel.quantity = context.fuel.quantity - 1;
-              context.fuelOperationsRemaining = context.fuel.numOperations;
+              context.fuel.quantity = context.fuel.quantity - 1
+              context.fuelOperationsRemaining = context.fuel.numOperations
             }
             switch (context.itemSmelting.name) {
-              case "SAND":
-                context.product.name = "GLASS";
-                context.product.quantity = context.product.quantity + 1;
-                break;
-              case "COBBLESTONE":
-                context.product.name = "STONE";
-                context.product.quantity = context.product.quantity + 1;
-                break;
+              case 'SAND':
+                context.product.name = 'GLASS'
+                context.product.quantity = context.product.quantity + 1
+                break
+              case 'COBBLESTONE':
+                context.product.name = 'STONE'
+                context.product.quantity = context.product.quantity + 1
+                break
               default:
-                break;
+                break
             }
           },
         },
-        { target: "smelting" },
+        {target: 'smelting'},
       ],
     },
   },
-});
+})
 
-export default furnaceMachine;
+export default furnaceMachine
