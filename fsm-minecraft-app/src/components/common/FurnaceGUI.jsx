@@ -1,9 +1,9 @@
 import React from 'react';
-import COAL from '../images/furnace/fuel/Coal.png'
-import SAND from '../images/furnace/smelt-inputs/Sand.png'
-import COBBLESTONE from '../images/furnace/smelt-inputs/Cobblestone.png'
-import GLASS from '../images/furnace/smelt-outputs/Glass.png'
-import STONE from '../images/furnace/smelt-outputs/Stone.png'
+import COAL from '../../images/furnace/fuel/Coal.png'
+import SAND from '../../images/furnace/smelt-inputs/Sand.png'
+import COBBLESTONE from '../../images/furnace/smelt-inputs/Cobblestone.png'
+import GLASS from '../../images/furnace/smelt-outputs/Glass.png'
+import STONE from '../../images/furnace/smelt-outputs/Stone.png'
 
 function FurnaceGUI({current, itemChoice}) {
   const getItemImage = (itemName) => {

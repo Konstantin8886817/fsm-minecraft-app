@@ -1,6 +1,6 @@
 import React from 'react';
-import idle from '../images/furnace/idle.png'
-import smelting from '../images/furnace/smelting.gif'
+import idle from '../../images/furnace/idle.png'
+import smelting from '../../images/furnace/smelting.gif'
 
 function Furnace({current}) {
   return (
