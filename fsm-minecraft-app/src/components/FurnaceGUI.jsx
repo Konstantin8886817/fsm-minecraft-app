@@ -1,3 +1,4 @@
+import React from 'react';
 import COAL from '../images/furnace/fuel/Coal.png'
 import SAND from '../images/furnace/smelt-inputs/Sand.png'
 import COBBLESTONE from '../images/furnace/smelt-inputs/Cobblestone.png'

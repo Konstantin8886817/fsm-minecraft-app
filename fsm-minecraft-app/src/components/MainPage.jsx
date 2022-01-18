@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import {useMachine} from '@xstate/react'
-import Furnace from './components/Furnace'
-import FurnaceGUI from './components/FurnaceGUI'
-import furnaceMachine from './machines/furnaceMachine'
+import Furnace from './Furnace'
+import FurnaceGUI from './FurnaceGUI'
+import furnaceMachine from '../machines/furnaceMachine'
 
 function App() {
   const [current, send] = useMachine(furnaceMachine)

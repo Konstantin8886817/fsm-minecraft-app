@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        "minecraft-shader": "url('/src/images/bg.png')",
+        "minecraft-shader": "url('/src/images/bg.jpeg')",
       }),
     },
   },
