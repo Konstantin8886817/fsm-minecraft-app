@@ -1,7 +1,7 @@
 # fsm-minecraft-app
 This is a ReactApp - Minecraft mini-game. And also it's a solution for home assignment that I got from one famous company.
 
-Stack technologies: Client: ReactJSX/React Hooks/ CSS/ TailWindCss; State: Finite State Mashine(xState for React); Tests: Jest, React Testing Library.
+Stack technologies: Client: ReactJSX/React Hooks/ CSS/ TailWindCss; State: Finite State Machine(xState for React); Tests: Jest, React Testing Library.
 
 ![Screen Shot 2022-01-18 at 17 30 44](https://user-images.githubusercontent.com/61967294/149967642-59f6026f-99db-495a-b1ba-fe107f289862.png)
 
