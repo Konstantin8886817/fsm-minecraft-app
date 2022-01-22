@@ -2,7 +2,7 @@ import createFSMLibrary from './fsmLib'
 
 describe('Finite State Machine unit tests', () => {
   describe('createFSMLibrary func unit tests', () => {
-    describe('machineConfig', () => {
+    describe('machineConfig param unit tests', () => {
       describe('when machineConfig provided', () => {
         it('should not throw an exception', () => {
           expect(() => {

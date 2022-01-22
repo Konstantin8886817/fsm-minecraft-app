@@ -27,7 +27,6 @@ export default function createFSMLibrary(machineConfig) {
 
   initialize && initialize()
 
-  // private
   let currentState = initialState
 
   function doAction(action) {
