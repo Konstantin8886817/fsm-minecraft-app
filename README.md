@@ -7,4 +7,4 @@ Stack technologies: Client: ReactJSX/React Hooks/ CSS/ TailWindCss; State: Finit
 
 ![Screen Shot 2022-01-18 at 17 31 28](https://user-images.githubusercontent.com/61967294/149967665-83c98cd5-0bd6-4aca-a682-3357322d74b6.png)
 
-![Screen Shot 2022-01-19 at 9 40 36](https://user-images.githubusercontent.com/61967294/150085775-5e9f62aa-c5cf-4af1-beda-cc62a1b67221.png)
+<img width="1352" alt="Screen Shot 2022-01-23 at 11 33 58" src="https://user-images.githubusercontent.com/61967294/150672593-93d0ad39-0ebd-4d83-9853-b52316efa8d6.png">
